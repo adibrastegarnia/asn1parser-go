@@ -28,6 +28,7 @@ import (
 func main() {
 
 	input, _ := antlr.NewFileStream(os.Args[1])
+	output := os.Args[2]
 
 	lexer := asn.NewASNLexer(input)
 	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
@@ -42,7 +43,7 @@ func main() {
 	assignments := listener.GetAssignments()
 
 	template := protogen.GetTemplate("./pkg/protogen", "proto.tpl")
-	f, err := os.Create("./cmd/protogen/test.proto")
+	f, err := os.Create(output)
 	if err != nil {
 		return
 	}

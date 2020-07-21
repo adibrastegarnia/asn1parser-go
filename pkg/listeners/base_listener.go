@@ -36,9 +36,7 @@ func (s *BaseASNListener) GetAssignments() []models.Assignment {
 }
 
 // VisitTerminal is called when a terminal node is visited.
-func (s *BaseASNListener) VisitTerminal(node antlr.TerminalNode) {
-	//fmt.Println("Terminal:", node.GetText())
-}
+func (s *BaseASNListener) VisitTerminal(node antlr.TerminalNode) {}
 
 // VisitErrorNode is called when an error node is visited.
 func (s *BaseASNListener) VisitErrorNode(node antlr.ErrorNode) {}
@@ -122,14 +120,10 @@ func (s *BaseASNListener) EnterGlobalModuleReference(ctx *asn.GlobalModuleRefere
 func (s *BaseASNListener) ExitGlobalModuleReference(ctx *asn.GlobalModuleReferenceContext) {}
 
 // EnterAssignedIdentifier is called when production assignedIdentifier is entered.
-func (s *BaseASNListener) EnterAssignedIdentifier(ctx *asn.AssignedIdentifierContext) {
-	//fmt.Println("Enter Assigned Identifer:", ctx.GetText())
-}
+func (s *BaseASNListener) EnterAssignedIdentifier(ctx *asn.AssignedIdentifierContext) {}
 
 // ExitAssignedIdentifier is called when production assignedIdentifier is exited.
-func (s *BaseASNListener) ExitAssignedIdentifier(ctx *asn.AssignedIdentifierContext) {
-	//fmt.Println("Exit Assigned Identifer:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitAssignedIdentifier(ctx *asn.AssignedIdentifierContext) {}
 
 // EnterSymbolList is called when production symbolList is entered.
 func (s *BaseASNListener) EnterSymbolList(ctx *asn.SymbolListContext) {}
@@ -144,17 +138,10 @@ func (s *BaseASNListener) EnterSymbol(ctx *asn.SymbolContext) {}
 func (s *BaseASNListener) ExitSymbol(ctx *asn.SymbolContext) {}
 
 // EnterAssignmentList is called when production assignmentList is entered.
-func (s *BaseASNListener) EnterAssignmentList(ctx *asn.AssignmentListContext) {
-	//fmt.Println("Enter Assignment List:", ctx.GetText())
-	//fmt.Println()
-}
+func (s *BaseASNListener) EnterAssignmentList(ctx *asn.AssignmentListContext) {}
 
 // ExitAssignmentList is called when production assignmentList is exited.
-func (s *BaseASNListener) ExitAssignmentList(ctx *asn.AssignmentListContext) {
-	//fmt.Println("Exit Assignment list:", ctx.GetText())
-	//fmt.Println()
-
-}
+func (s *BaseASNListener) ExitAssignmentList(ctx *asn.AssignmentListContext) {}
 
 // EnterAssignment is called when production assignment is entered.
 func (s *BaseASNListener) EnterAssignment(ctx *asn.AssignmentContext) {
@@ -164,21 +151,13 @@ func (s *BaseASNListener) EnterAssignment(ctx *asn.AssignmentContext) {
 	assignment := models.Assignment{
 		Name: name,
 	}
-
 	s.assignments = append(s.assignments, assignment)
-	/*fmt.Println("Enter Assignment:", ctx.GetText(), ctx.
-		GetChild(0).
-		GetPayload().(*antlr.CommonToken).GetText())
-	fmt.Println()*/
 }
 
 // ExitAssignment is called when production assignment is exited.
 func (s *BaseASNListener) ExitAssignment(ctx *asn.AssignmentContext) {
-	//fmt.Println("Exit Assignment:", ctx.GetText())
 	lastAssignment := getLastAssignment(s.assignments)
 	s.assignments[len(s.assignments)-1] = lastAssignment
-	//fmt.Println("Last Assignment", s.assignments)
-	//fmt.Println()
 }
 
 // EnterSequenceType is called when production sequenceType is entered.
@@ -190,13 +169,10 @@ func (s *BaseASNListener) EnterSequenceType(ctx *asn.SequenceTypeContext) {
 	lastAssignment := getLastAssignment(s.assignments)
 	lastAssignment.Type = _type
 	s.assignments[len(s.assignments)-1] = lastAssignment
-	//fmt.Println("Enter Sequence type:", ctx.GetText(), _type)
-	//fmt.Println()
 }
 
 // ExitSequenceType is called when production sequenceType is exited.
 func (s *BaseASNListener) ExitSequenceType(ctx *asn.SequenceTypeContext) {
-	//fmt.Println("Exit Sequence type:", ctx.GetText())
 }
 
 // EnterExtensionAndException is called when production extensionAndException is entered.
@@ -278,34 +254,22 @@ func (s *BaseASNListener) EnterSizeConstraint(ctx *asn.SizeConstraintContext) {}
 func (s *BaseASNListener) ExitSizeConstraint(ctx *asn.SizeConstraintContext) {}
 
 // EnterParameterizedAssignment is called when production parameterizedAssignment is entered.
-func (s *BaseASNListener) EnterParameterizedAssignment(ctx *asn.ParameterizedAssignmentContext) {
-	//fmt.Println("Enter Parameterized Assignment", ctx.GetText())
-}
+func (s *BaseASNListener) EnterParameterizedAssignment(ctx *asn.ParameterizedAssignmentContext) {}
 
 // ExitParameterizedAssignment is called when production parameterizedAssignment is exited.
-func (s *BaseASNListener) ExitParameterizedAssignment(ctx *asn.ParameterizedAssignmentContext) {
-	//fmt.Println("Exit Parameterized Assignment", ctx.GetText())
-}
+func (s *BaseASNListener) ExitParameterizedAssignment(ctx *asn.ParameterizedAssignmentContext) {}
 
 // EnterParameterList is called when production parameterList is entered.
-func (s *BaseASNListener) EnterParameterList(ctx *asn.ParameterListContext) {
-	//fmt.Println("Enter Paramter List:", ctx.GetText())
-}
+func (s *BaseASNListener) EnterParameterList(ctx *asn.ParameterListContext) {}
 
 // ExitParameterList is called when production parameterList is exited.
-func (s *BaseASNListener) ExitParameterList(ctx *asn.ParameterListContext) {
-	//fmt.Println("Exit Paramters List:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitParameterList(ctx *asn.ParameterListContext) {}
 
 // EnterParameter is called when production parameter is entered.
-func (s *BaseASNListener) EnterParameter(ctx *asn.ParameterContext) {
-	//fmt.Println("Enter Parameter:", ctx.GetText())
-}
+func (s *BaseASNListener) EnterParameter(ctx *asn.ParameterContext) {}
 
 // ExitParameter is called when production parameter is exited.
-func (s *BaseASNListener) ExitParameter(ctx *asn.ParameterContext) {
-	//fmt.Println("Exist Parameter:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitParameter(ctx *asn.ParameterContext) {}
 
 // EnterParamGovernor is called when production paramGovernor is entered.
 func (s *BaseASNListener) EnterParamGovernor(ctx *asn.ParamGovernorContext) {}
@@ -389,24 +353,16 @@ func (s *BaseASNListener) EnterRequiredToken(ctx *asn.RequiredTokenContext) {}
 func (s *BaseASNListener) ExitRequiredToken(ctx *asn.RequiredTokenContext) {}
 
 // EnterLiteral is called when production literal is entered.
-func (s *BaseASNListener) EnterLiteral(ctx *asn.LiteralContext) {
-	//fmt.Println("Enter Literal:", ctx.GetText())
-}
+func (s *BaseASNListener) EnterLiteral(ctx *asn.LiteralContext) {}
 
 // ExitLiteral is called when production literal is exited.
-func (s *BaseASNListener) ExitLiteral(ctx *asn.LiteralContext) {
-	//fmt.Println("Exit Literal:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitLiteral(ctx *asn.LiteralContext) {}
 
 // EnterPrimitiveFieldName is called when production primitiveFieldName is entered.
-func (s *BaseASNListener) EnterPrimitiveFieldName(ctx *asn.PrimitiveFieldNameContext) {
-	//fmt.Println("Enter primitive field name:", ctx.GetText())
-}
+func (s *BaseASNListener) EnterPrimitiveFieldName(ctx *asn.PrimitiveFieldNameContext) {}
 
 // ExitPrimitiveFieldName is called when production primitiveFieldName is exited.
-func (s *BaseASNListener) ExitPrimitiveFieldName(ctx *asn.PrimitiveFieldNameContext) {
-	//fmt.Println("Exist primitive field name:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitPrimitiveFieldName(ctx *asn.PrimitiveFieldNameContext) {}
 
 // EnterFieldSpec is called when production fieldSpec is entered.
 func (s *BaseASNListener) EnterFieldSpec(ctx *asn.FieldSpecContext) {}
@@ -617,19 +573,13 @@ func (s *BaseASNListener) EnterTypeAssignment(ctx *asn.TypeAssignmentContext) {
 }
 
 // ExitTypeAssignment is called when production typeAssignment is exited.
-func (s *BaseASNListener) ExitTypeAssignment(ctx *asn.TypeAssignmentContext) {
-	//fmt.Println("Exist type Assignment", ctx.GetText())
-}
+func (s *BaseASNListener) ExitTypeAssignment(ctx *asn.TypeAssignmentContext) {}
 
 // EnterValueAssignment is called when production valueAssignment is entered.
-func (s *BaseASNListener) EnterValueAssignment(ctx *asn.ValueAssignmentContext) {
-	//fmt.Println("Enter Value Assignment:", ctx.GetText())
-}
+func (s *BaseASNListener) EnterValueAssignment(ctx *asn.ValueAssignmentContext) {}
 
 // ExitValueAssignment is called when production valueAssignment is exited.
-func (s *BaseASNListener) ExitValueAssignment(ctx *asn.ValueAssignmentContext) {
-	//fmt.Println("Exit Value Assignment:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitValueAssignment(ctx *asn.ValueAssignmentContext) {}
 
 // EnterAsnType is called when production asnType is entered.
 func (s *BaseASNListener) EnterAsnType(ctx *asn.AsnTypeContext) {}
@@ -790,14 +740,10 @@ func (s *BaseASNListener) EnterChoiceValue(ctx *asn.ChoiceValueContext) {}
 func (s *BaseASNListener) ExitChoiceValue(ctx *asn.ChoiceValueContext) {}
 
 // EnterEnumeratedValue is called when production enumeratedValue is entered.
-func (s *BaseASNListener) EnterEnumeratedValue(ctx *asn.EnumeratedValueContext) {
-	//fmt.Println("Enter Enum value:", ctx.GetText())
-}
+func (s *BaseASNListener) EnterEnumeratedValue(ctx *asn.EnumeratedValueContext) {}
 
 // ExitEnumeratedValue is called when production enumeratedValue is exited.
-func (s *BaseASNListener) ExitEnumeratedValue(ctx *asn.EnumeratedValueContext) {
-	//fmt.Println("Exit Enum value:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitEnumeratedValue(ctx *asn.EnumeratedValueContext) {}
 
 // EnterSignedNumber is called when production signedNumber is entered.
 func (s *BaseASNListener) EnterSignedNumber(ctx *asn.SignedNumberContext) {}
@@ -876,24 +822,16 @@ func (s *BaseASNListener) EnterEnumeratedType(ctx *asn.EnumeratedTypeContext) {
 	lastAssignment := getLastAssignment(s.assignments)
 	lastAssignment.Type = _type
 	s.assignments[len(s.assignments)-1] = lastAssignment
-	//fmt.Println("Enter Enum type", ctx.GetText(), _type)
 }
 
 // ExitEnumeratedType is called when production enumeratedType is exited.
-func (s *BaseASNListener) ExitEnumeratedType(ctx *asn.EnumeratedTypeContext) {
-	//fmt.Println("Exit Enum Type:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitEnumeratedType(ctx *asn.EnumeratedTypeContext) {}
 
 // EnterEnumerations is called when production enumerations is entered.
-func (s *BaseASNListener) EnterEnumerations(ctx *asn.EnumerationsContext) {
-	//fmt.Println("Enter enumerations:", ctx.GetText())
-
-}
+func (s *BaseASNListener) EnterEnumerations(ctx *asn.EnumerationsContext) {}
 
 // ExitEnumerations is called when production enumerations is exited.
-func (s *BaseASNListener) ExitEnumerations(ctx *asn.EnumerationsContext) {
-	//fmt.Println("Exit enumerations:", ctx.GetText())
-}
+func (s *BaseASNListener) ExitEnumerations(ctx *asn.EnumerationsContext) {}
 
 // EnterRootEnumeration is called when production rootEnumeration is entered.
 func (s *BaseASNListener) EnterRootEnumeration(ctx *asn.RootEnumerationContext) {}
@@ -902,20 +840,13 @@ func (s *BaseASNListener) EnterRootEnumeration(ctx *asn.RootEnumerationContext) 
 func (s *BaseASNListener) ExitRootEnumeration(ctx *asn.RootEnumerationContext) {}
 
 // EnterEnumeration is called when production enumeration is entered.
-func (s *BaseASNListener) EnterEnumeration(ctx *asn.EnumerationContext) {
-	//fmt.Println("Enter enumeration")
-
-}
+func (s *BaseASNListener) EnterEnumeration(ctx *asn.EnumerationContext) {}
 
 // ExitEnumeration is called when production enumeration is exited.
-func (s *BaseASNListener) ExitEnumeration(ctx *asn.EnumerationContext) {
-	//fmt.Println("Exit enumeration")
-}
+func (s *BaseASNListener) ExitEnumeration(ctx *asn.EnumerationContext) {}
 
 // EnterEnumerationItem is called when production enumerationItem is entered.
 func (s *BaseASNListener) EnterEnumerationItem(ctx *asn.EnumerationItemContext) {
-	//fmt.Println("Enter Enumeration Item")
-
 	lastAssignment := getLastAssignment(s.assignments)
 	childPayload := ctx.GetChild(0).GetPayload()
 	var enumItem string
@@ -937,13 +868,10 @@ func (s *BaseASNListener) EnterEnumerationItem(ctx *asn.EnumerationItemContext) 
 	})
 
 	s.assignments[len(s.assignments)-1] = lastAssignment
-
 }
 
 // ExitEnumerationItem is called when production enumerationItem is exited.
-func (s *BaseASNListener) ExitEnumerationItem(ctx *asn.EnumerationItemContext) {
-	//fmt.Println("Exit Enumeration Item")
-}
+func (s *BaseASNListener) ExitEnumerationItem(ctx *asn.EnumerationItemContext) {}
 
 // EnterNamedNumber is called when production namedNumber is entered.
 func (s *BaseASNListener) EnterNamedNumber(ctx *asn.NamedNumberContext) {}
@@ -1008,15 +936,10 @@ func (s *BaseASNListener) EnterIntegerType(ctx *asn.IntegerTypeContext) {
 	lastAssignment := getLastAssignment(s.assignments)
 	lastAssignment.Type = _type
 	s.assignments[len(s.assignments)-1] = lastAssignment
-	//fmt.Println("Enter Integer Type:", ctx.GetText(), _type)
-	//fmt.Println()
 }
 
 // ExitIntegerType is called when production integerType is exited.
-func (s *BaseASNListener) ExitIntegerType(ctx *asn.IntegerTypeContext) {
-	/*fmt.Println("Exit Integer Type:", ctx.GetText())
-	fmt.Println()*/
-}
+func (s *BaseASNListener) ExitIntegerType(ctx *asn.IntegerTypeContext) {}
 
 // EnterNamedNumberList is called when production namedNumberList is entered.
 func (s *BaseASNListener) EnterNamedNumberList(ctx *asn.NamedNumberListContext) {}
@@ -1057,16 +980,10 @@ func (s *BaseASNListener) EnterComponentIdList(ctx *asn.ComponentIdListContext) 
 func (s *BaseASNListener) ExitComponentIdList(ctx *asn.ComponentIdListContext) {}
 
 // EnterOctetStringType is called when production octetStringType is entered.
-func (s *BaseASNListener) EnterOctetStringType(ctx *asn.OctetStringTypeContext) {
-	//fmt.Println("Enter String type:", ctx.GetText())
-	//fmt.Println()
-}
+func (s *BaseASNListener) EnterOctetStringType(ctx *asn.OctetStringTypeContext) {}
 
 // ExitOctetStringType is called when production octetStringType is exited.
-func (s *BaseASNListener) ExitOctetStringType(ctx *asn.OctetStringTypeContext) {
-	//fmt.Println("Exit String type:", ctx.GetText())
-	//fmt.Println()
-}
+func (s *BaseASNListener) ExitOctetStringType(ctx *asn.OctetStringTypeContext) {}
 
 // EnterBitStringType is called when production bitStringType is entered.
 func (s *BaseASNListener) EnterBitStringType(ctx *asn.BitStringTypeContext) {}
